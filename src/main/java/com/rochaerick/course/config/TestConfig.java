@@ -14,7 +14,7 @@ import com.rochaerick.course.repositories.UserRepository;
 @Profile("test") //configuração para rodar no perfil de teste
 public class TestConfig implements CommandLineRunner {
 
-    @Autowired
+    @Autowired //injeção de dependência
     private UserRepository userRepository;
 //metodo run é um metodo da interface CommandLineRunner, é para rodar quando o programa iniciar
     @Override
