@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rochaerick.course.entities.Order;
-import com.rochaerick.course.entities.User;
 import com.rochaerick.course.services.OrderService;
 
 import java.util.List;

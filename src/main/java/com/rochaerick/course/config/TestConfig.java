@@ -8,9 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.rochaerick.course.entities.Category;
 import com.rochaerick.course.entities.Order;
 import com.rochaerick.course.entities.User;
 import com.rochaerick.course.entities.enums.OrderStatus;
+import com.rochaerick.course.repositories.CategoryRepository;
 import com.rochaerick.course.repositories.OrderRepository;
 import com.rochaerick.course.repositories.UserRepository;
 
@@ -23,9 +25,20 @@ public class TestConfig implements CommandLineRunner {
     
     @Autowired //injeção de dependência
     private UserRepository userRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
+     
 //metodo run é um metodo da interface CommandLineRunner, é para rodar quando o programa iniciar
     @Override
     public void run(String... args) throws Exception {
+        
+        Category cat1 = new Category(null, "Electronics");
+        Category cat2 = new Category(null, "Books");
+        Category cat3 = new Category(null, "Computers");
+        
+        categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+
         User u1 = new User(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
         User u2 = new User(null, "Alex Green", "alex@gmail.com", "977777777", "123456"); 
 
@@ -35,6 +48,7 @@ public class TestConfig implements CommandLineRunner {
         Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), u1, OrderStatus.DELIVERED);
 
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+        
     }
 }
 //classe feita para testar o seeding do DB
